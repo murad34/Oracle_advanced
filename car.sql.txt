@@ -1,0 +1,46 @@
+
+create table Car (
+idCar int, 
+nameCar varchar(20), 
+modelCar char(20), 
+dateCar date, 
+colorCar varchar(20), 
+numberOfOwners number(9)
+);
+
+insert into Car values (1, 'Mercedes', 'C250', to_date('sep.2013','mon.yyyy'), 'black', 2);
+
+insert into Car values (2, 'Toyota', 'Camry', to_date('jul.2012','mon.yyyy'), 'orange', 4);
+
+insert into Car values (3, 'Bmw', 'i7', to_date('dec.2015','mon.yyyy'), 'white', 1);
+
+insert into Car values (4, 'Toyota', 'Corolla', to_date('feb.2008','mon.yyyy'), 'brown', 3);
+
+insert into Car values (5, 'Audi', 'a4', to_date('sep.2009','mon.yyyy'), 'black', 2);
+
+select * from Car;
+
+update Car set modelCar = 'a8' where idCar = 5;
+
+update Car set colorCAR = 'white' where nameCar = 'Mercedes';
+
+select to_char(dateCar,'MON.yyyy') from Car where idCar = 3;
+
+update Car set dateCar = to_date('dec.2012','mon.yyyy') where idCar = 3;
+
+select to_char(dateCar,'MON.yyyy') from Car where idCar = 4;
+
+alter table Car add power int;
+
+update Car set power = 220 where idCar = 1;
+
+update Car set power = 250 where idCar = 2;
+
+update Car set power = 180 where idCar = 3;
+
+update Car set power = 270 where idCar = 4;
+
+update Car set power = 260 where idCar = 5;
+
+select * from Car
+
