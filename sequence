@@ -1,0 +1,36 @@
+
+create sequence sq1 increment by 1 start with 1 ;
+
+select sq1.nextval from dual;
+
+select sq1.currval from dual;                                                     
+
+-----------------------------------------
+
+create sequence sql_sequence
+minvalue 1
+start with 2
+maxvalue 10
+increment by 2
+cycle 
+cache 5;
+
+select sql_sequence.nextval from dual;
+
+
+create table testseq (
+testid number primary key,
+testname nvarchar2(10)
+) ;
+
+create sequence testsequence
+minvalue 1
+start with 2
+maxvalue 100
+cycle 
+cache 30
+increment by 2 ;
+
+insert into testseq values(testsequence.nextval, 'Murad');
+
+select * from testseq;
