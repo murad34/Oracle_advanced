@@ -1,0 +1,51 @@
+
+create table test_tcl(tcl_id number, tcl_ad varchar(20));
+
+insert into test_tcl values (1, 'salam');
+
+savepoint murad;
+
+select * from test_tcl;
+
+rollback ;
+
+select * from test_tcl;
+
+desc test_tcl;
+
+insert into test_tcl values (1, 'afterrb');
+
+savepoint s1;
+
+insert into test_tcl values (2, 'polat');
+
+savepoint s2;
+
+commit;
+
+rollback;
+
+select * from test_tcl;
+
+truncate table test_tcl;
+
+rollback;
+
+select * from test_tcl;
+
+insert into test_tcl values (1, 'Murad');
+
+insert into test_tcl values (2, 'POLAT');
+
+savepoint s3;
+
+insert into test_tcl values (3, 'AYE');
+
+delete test_tcl;
+
+select * from test_tcl;
+
+rollback;
+
+select * from test_tcl;
+
