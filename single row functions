@@ -1,0 +1,48 @@
+
+select * from products;
+
+select product_id, product_name, standard_cost from products where standard_cost = (select max(standard_cost) from products) ;
+
+select standard_cost from products order by standard_cost desc fetch next 3 rows only ;
+
+select standard_cost from products order by standard_cost desc offset 3 rows fetch next 3 rows only ;
+
+create table amounts (a_id number, value number);
+
+insert into amounts values (7, 3000);
+
+select * from amounts order by value desc;
+
+select * from amounts order by value desc fetch first 3 rows only ;
+
+select * from amounts order by value desc fetch first 3 rows with ties  ; 
+
+select round(12.7) from dual;
+select round(12.7,2) from dual;
+select round(12.735,2) from dual;
+
+select ceil(12.234) from dual ;
+
+select floor(12.6537) from dual ;
+
+select trunc(17.6564) from dual;
+
+select sqrt(16) from dual;
+
+select power(2,3) from dual;
+
+select stddev(standard_cost) as stddev from products;
+
+select ntile(3) over(order by value desc) as komanda, a.* from amounts a ;
+
+select sysdate from dual;
+
+select trunc(sysdate, 'year') from dual;
+
+select trunc(sysdate, 'month') from dual;
+
+select trunc(sysdate, 'day') from dual;
+
+select level from dual connect by level<10;
+
+select sysdate + level from dual connect by level<3;
