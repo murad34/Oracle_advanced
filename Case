@@ -1,0 +1,44 @@
+
+select * from user_tables ;
+
+create table loans (contr_id number, fullname varchar(20), amount number, curremcy_id number);
+
+insert into loans values (1, 'Murad', 5000, 700);
+insert into loans values (2, 'Ravan', 10000, 500);
+insert into loans values (3, 'Lyaman', 2000, 300);
+
+select fullname, amount,
+case curremcy_id
+when 700 then 'USD'
+when 500 then 'AZN'
+when 300 then 'EUR'
+end
+as valyuta
+from loans;
+
+select * from orders; 
+select distinct status from orders;
+
+select status from orders
+union
+select status from orders;
+
+select
+case status
+when 'Pending' then 'finished'
+when 'Shipped' then 'process'
+when 'Canceled' then 'error'
+end
+as new_status
+from orders;
+
+select * from orders;
+
+select 
+case 
+when extract(year from order_date)=2013 then '2013 year'
+when extract(year from order_date)=2016 then '2016 year'
+end
+as data
+from orders;
+
