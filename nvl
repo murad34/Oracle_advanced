@@ -1,0 +1,16 @@
+
+select nvl(salesman_id,100) from orders o;
+
+select o.*, nvl(salesman_id,100) from orders o;
+
+select avg(salesman_id),avg(nvl(salesman_id,0)) from orders o;
+
+select salesman_id, nvl2(salesman_id,0,1) from orders o;
+
+select * from locations;
+
+select state, nvl2(state,'+','-') from locations l;
+
+select * from locations;
+
+select city, sum (location_id) from locations group by (city) ;
