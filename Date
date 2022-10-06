@@ -1,0 +1,8 @@
+
+select to_date('10.10.2022','dd.mm.yyyy')-to_date('01.10.2022','dd.mm.yyyy') as betweeennn from dual;
+
+select date'2022-10-01' + level -1 dt -- minus 1 na den ranshe
+from   dual
+connect by level <= (
+  date'2022-10-10' - date'2022-10-01'  + 1 -- plus odin na den plus
+);
