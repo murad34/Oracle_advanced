@@ -1,0 +1,39 @@
+
+
+select * from loan_contract;
+
+create table test1(id number(3), name varchar2(20));
+
+insert into test1 values (1,'aaa');
+insert into test1 values (2,'bbbb');
+insert into test1 values (3,'ccccc');
+insert into test1 values (4,'M');
+
+select * from  test1;
+
+select DISTINCT * from test1;
+
+select id,name, count(*) from test1 group by id,name;
+
+select rowid,id,name from test1;
+
+select id,name,min(rowid) from test1 group by id,name;
+
+delete test1 where rowid not in (select max(rowid) from test1 group by id,name) ; -- delete the same data (same value) like distinct
+
+select * from test1;
+
+select corr(standard_cost, list_price) over (order by standard_cost,list_price) as cor from products ;
+
+select round(corr(standard_cost, list_price) over (order by standard_cost,list_price)) as cor from products ;
+
+select avg(cor) from (select round(corr(standard_cost, list_price) over (order by standard_cost,list_price)) as cor from products) ;
+
+select round(avg(cor),4) from (select round(corr(standard_cost, list_price) over (order by standard_cost,list_price),4) as cor from products) ;
+
+
+---------------------
+
+select to_date('06.10.2022','dd.mm.yyyy')-to_date('04.09.2003','dd.mm.yyyy') as betweeennn from dual;
+
+
