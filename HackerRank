@@ -1,0 +1,19 @@
+
+// DIFFERENCE BETWEEN ALL COUNT AND DISTINCT COUNT
+
+select count (all city) from station ;
+
+select count (distinct city) from station ;
+
+select count(all city) - count(distinct city) from station;
+
+
+// Query the two cities in STATION with the shortest and longest CITY names, choose the one that comes first when ordered alphabetically.
+
+SELECT city,length(city) from station where length(city)=(select min(length(city)) from station) or length(city)=(select max(length(city)) from station) order by city ;
+
+SELECT distinct length(city) from station where length(city)=(select min(length(city)) from station) or length(city)=(select max(length(city)) from station)  ;
+
+SELECT distinct city from station where length(city)=(select min(length(city)) from station) or length(city)=(select max(length(city)) from station)  ;
+
+
