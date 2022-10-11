@@ -1,0 +1,14 @@
+
+select count(*) from loan_contract l, currency c where l.currency_id = c.currency_id(+) ; --inner join
+
+select count(*) from loan_contract l, currency c where l.currency_id = c.currency_id(+) ; --left join
+
+select count(*) from loan_contract l, currency c where l.currency_id (+) = c.currency_id ; -- right join
+
+select * from loan_contract l inner join currency c on l.currency_id = c.currency_id ;
+
+select * from loan_contract l inner join currency c using(currency_id) ; --natural join
+
+select * from loan_contract where exists (select * from currency) ;
+
+select * from currency c where not exists (select * from loan_contract l where l.currency_id = c.currency_id) ; --semi join
