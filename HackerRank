@@ -17,3 +17,16 @@ SELECT distinct length(city) from station where length(city)=(select min(length(
 SELECT distinct city from station where length(city)=(select min(length(city)) from station) or length(city)=(select max(length(city)) from station)  ;
 
 
+
+// Query the list of CITY names starting with vowels (i.e., a, e, i, o, or u) from STATION.
+
+select distinct city from station where lower(substr(city,1,1)) in ('a','e','i','o','u');
+
+
+// Query the list of CITY names ending with vowels (a, e, i, o, u) from STATION.
+
+select distinct CITY from STATION where substr(CITY, -1, 1) in ('a','e','i','o','u');
+
+//
+
+
