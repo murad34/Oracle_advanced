@@ -1,8 +1,47 @@
 
-select to_date('10.10.2022','dd.mm.yyyy')-to_date('01.10.2022','dd.mm.yyyy') as betweeennn from dual;
+// Count days between two dates
+
+select to_date('10.10.2022','dd.mm.yyyy')-to_date('01.10.2022','dd.mm.yyyy') as between from dual;
+
+// Select all days betwween two dates
 
 select date'2022-10-01' + level -1 dt -- minus 1 na den ranshe
 from   dual
 connect by level <= (
   date'2022-10-10' - date'2022-10-01'  + 1 -- plus odin na den plus
 );
+
+// Select today date, last date of this month, and how days left 
+
+SELECT SYSDATE,LAST_DAY(SYSDATE) "Last", 
+LAST_DAY(SYSDATE) - SYSDATE "Days Left" 
+FROM DUAL;
+
+// Last day of next month
+
+SELECT SYSDATE, LAST_DAY(ADD_MONTHS(SYSDATE, 1)) FROM DUAL;
+
+// Last day of previous month
+
+SELECT SYSDATE, LAST_DAY(ADD_MONTHS(SYSDATE, -1)) FROM DUAL;
+
+// First day
+
+select trunc(sysdate,'month') from dual;
+select trunc(sysdate,'year') from dual
+
+// to_char - den nedeli
+
+select sysdate, to_char(sysdate, 'day') from dual ;
+
+// 
+
+
+
+
+select sysdate, to_char(sysdate, 'day') from dual ;
+
+select trunc(sysdate,month) + level -1 from dual connect by level >= (select to_date(sysdate, 'dd.mm.yyyy') - trunc(sysdate,month) ) ;
+
+
+
