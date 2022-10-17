@@ -1,0 +1,19 @@
+
+// Ishcilerin satdigi mehsullar
+
+with
+a1 as (select e.employee_id ,e.first_name,e.last_name, o.order_id from employees e inner join orders o using(employee_id) ),
+a2 as (select oi.order_id ,p.product_id , p.product_name from order_items oi inner join products p using(product_id) )
+select  a1.employee_id ,a1.first_name,a1.last_name , a2.product_id , a2.product_name from a1 inner join a2 using(order_id) ;
+
+// Ishci nece mehsul satib (say)
+
+with
+a1 as (select e.employee_id ,e.first_name,e.last_name, o.order_id from employees e inner join orders o using(employee_id) ),
+a2 as (select oi.order_id ,p.product_id , p.product_name from order_items oi inner join products p using(product_id) ),
+a3 as (select  a1.employee_id ,a1.first_name,a1.last_name , a2.product_id , a2.product_name from a1 inner join a2 using(order_id) ),
+a4 as (select i.product_id , w.warehouse_id , w.warehouse_name from inventories i inner join warehouses w using(warehouse_id) )
+select a3.employee_id, a3.first_name, a3.last_name, a4.warehouse_id, a4.warehouse_name, a3.product_id from a3 inner join a4 using(product_id) ;
+
+a4 - hansi warehouse da mehsulu satib 
+
