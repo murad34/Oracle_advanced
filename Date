@@ -34,14 +34,28 @@ select trunc(sysdate,'year') from dual
 
 select sysdate, to_char(sysdate, 'day') from dual ;
 
-// 
+// Days between first day of this month and sysdate
+
+select trunc(sysdate,'month') + level -1 
+from dual 
+connect by level <= ( to_date(sysdate) - trunc(sysdate,'month') +1 ) ;
 
 
+// DAYS OF THE WEEK BETWEEN TWO DATES 
+to_char(new_data,'DAY') full name of day
+to_char(new_data,'DY') 3 letters
+to_char(new_data,'d') - number of day of the week
 
+select new_data, to_char(new_data,'DAY') from ( 
+select trunc(sysdate,'month') + level -1 new_data
+from dual 
+connect by level <= to_date(sysdate) - trunc(sysdate,'month') +1 ) ;
 
-select sysdate, to_char(sysdate, 'day') from dual ;
+select oktyabr, to_char(oktyabr,'DAY'), to_char(oktyabr,'DY'), to_char(oktyabr,'d') from (
+select trunc(sysdate,'month') + level - 1 oktyabr
+from dual
+connect by level <= last_day(sysdate) - trunc(sysdate,'month') +1 
+) where to_char(oktyabr,'DY') in 'MON' ;   ;
 
-select trunc(sysdate,month) + level -1 from dual connect by level >= (select to_date(sysdate, 'dd.mm.yyyy') - trunc(sysdate,month) ) ;
-
-
+//
 
