@@ -1,0 +1,48 @@
+
+alter table contract add komissiya as (amount*commission/100) ;
+
+alter table contract add komissiya2 as (round(amount*commission/100)) ;
+
+select * from contract;
+
+alter table contract add komissiya3 as (
+case
+when amount<30000 then 'bronze'
+when amount>30000 and amount<75000 then 'silver'
+when amount>75000 and amount<90000 then 'gold'
+when amount>90000 then 'gold'
+end ) ;   
+
+select * from contract;
+
+select * from employees;
+
+select first_name, last_name, 'EMPLOYEE' TYPE from employees
+union 
+select first_name, last_name, 'CUSTOMER' from contract ;
+
+select first_name, last_name, 'EMPLOYEE' TYPE from employees
+union all
+select first_name, last_name, 'CUSTOMER' from contract ;
+
+create table uni (id number);
+insert into uni values (7);
+
+select * from uni;
+
+select * from uni
+union
+select * from uni;
+
+select * from uni
+union all
+select * from uni;
+
+create table uni2 (id number);
+insert into uni2 values (9);
+select * from uni2;
+
+select * from uni2
+INTERSECT
+select * from uni;
+
