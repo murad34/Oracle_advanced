@@ -1,0 +1,41 @@
+
+
+INSERT ALL
+   WHEN amount < 10000 THEN
+      INTO small_orders
+   WHEN amount >= 10000 AND amount <= 30000 THEN
+      INTO medium_orders
+   WHEN amount > 30000 THEN
+      INTO big_orders
+      
+  SELECT order_id,
+         customer_id,
+         (quantity * unit_price) amount
+  FROM orders
+  INNER JOIN order_items USING(order_id);
+  
+
+select * from currency;
+select * from contract;
+
+create table azn2 as (select * from contract where 2<1);
+create table eur2 as (select * from contract where 2<1);
+create table usd2 as (select * from contract where 2<1);
+create table geo2 as (select * from contract where 2<1);
+create table mmmw as (select * from contract where 2<1);
+
+
+select * from azn2 ;
+
+
+INSERT ALL
+   WHEN currency_id = 11 THEN
+      INTO azn2
+   WHEN currency_id = 12 THEN
+      INTO eur2
+   WHEN currency_id = 13 THEN
+      INTO usd2
+      
+  SELECT *
+  FROM contract ;
+  
