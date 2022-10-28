@@ -1,0 +1,93 @@
+
+--------------------------------------------------------------------------------
+
+set SERVEROUTPUT on; --ESLI PL SQL NE RABOTAET
+
+---------------------
+
+
+begin
+dbms_output.put_line('salam');
+end;
+/
+
+------------------------------
+
+
+declare 
+a nvarchar2(30);
+begin
+select name into a from customers where customer_id = 132;
+dbms_output.put_line(a || ' AYE');
+end;
+/
+
+--------------------------------------------------------
+
+create or replace PROCEDURE smt
+is
+a nvarchar2(30);
+begin
+select name into a from customers where customer_id = 133;
+dbms_output.put_line(a || ' AYE');
+end;
+/
+
+exec smt;
+
+-------------------------------------------------------------------------------
+
+create or replace PROCEDURE smt2 (e_id number)
+is
+a nvarchar2(30);
+begin
+select name into a from customers where customer_id = e_id;
+dbms_output.put_line(a || ' AYE');
+end;
+/
+
+exec smt2(135);
+
+---------------------
+
+select * from employees;
+
+create or replace PROCEDURE smt3 (emp_id number)
+is
+a nvarchar2(30);
+b nvarchar2(30);
+c nvarchar2(30);
+d nvarchar2(30);
+begin
+select employee_id,first_name,last_name,email into a,b,c,d from employees where employee_id = emp_id;
+dbms_output.put_line(a || ' ' ||  b || ' ' || c || ' ' || d);
+end;
+/
+
+exec smt3(13);
+
+-------------------------------------
+
+create or replace function smt4 (e_id number)return nvarchar2
+as
+a nvarchar2(250);
+begin
+select name into a from customers where customer_id = e_id;
+return a;
+end smt4 ;
+/
+
+select smt4(135) from dual ;
+
+-----------------------------------------------------------------------------
+
+create or replace function smt5 (x number) return number
+as
+begin
+return x*x*x ;
+end smt5 ;
+/
+
+select smt5(5) from dual ;
+
+------------------------------------------------------------------------------
