@@ -1,0 +1,33 @@
+
+select * from loan_contract;
+
+select * from contract;
+
+
+alter table loan_contract modify
+    PARTITION by RANGE (id) 
+    (partition p1 values less than (250000),
+     partition p2 values less than (500000),
+     partition p3 values less than (750000),
+     partition p4 values less than (1000000)
+     ) ;
+
+select * from loan_contract PARTITION (p1) ;
+
+select * from loan_contract PARTITION (p2) ;
+
+-------------------------------------------------------------------------------
+ 
+alter table contract modify
+    PARTITION by RANGE (amount)
+    (partition p1 values less than (250000),
+     partition p2 values less than (500000),
+     partition p3 values less than (750000),
+     partition p4 values less than (1000000)
+     ) ;   
+     
+select * from contract PARTITION (p1);
+     
+select * from contract PARTITION (p2);
+
+--------------------------------------------------------------------------------
