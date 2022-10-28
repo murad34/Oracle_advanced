@@ -1,0 +1,40 @@
+
+   TRIGGER ;
+
+create table x(nums number);
+
+create table z(deleted_nums number);
+
+create table y(deleted_nums number,inserted_nums number );
+
+insert into x values (9);
+
+create or replace trigger trigger1
+before delete on x
+for each row 
+begin
+insert into z values (:old.nums);
+end;
+/
+
+select * from x;
+
+select * from z;
+
+delete from x where nums = 4;
+
+------
+
+create or replace trigger trigger2
+after update on x
+for each row 
+begin
+insert into y values (:old.nums,:new.nums);
+end ;
+/
+
+select * from x;
+select * from y;
+
+update x set nums = 15555 where nums =155;
+
