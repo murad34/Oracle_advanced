@@ -57,6 +57,14 @@ from dual
 connect by level <= last_day(sysdate) - trunc(sysdate,'month') +1 
 ) where to_char(oktyabr,'DY') in 'MON' ;   ;
 
-//
+------------------------
+
+// ilin butun aylarin son gunlerini cixaran sql query
+
+select last_day(add_months(trunc(sysdate, 'year'), level-1)) as result 
+from dual connect by level <=12;
+
+select add_months(trunc(sysdate, 'year'), level ) -1 as result 
+from dual connect by level <=12;
 
 
