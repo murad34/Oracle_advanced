@@ -1,0 +1,54 @@
+
+create table RentCar (
+car_id number primary key,
+car_name varchar2(20),
+car_year date
+);
+
+create table Characteristics (
+car_id number,
+color varchar(20),
+powerr number,
+wheels number,
+FOREIGN KEY (car_id) references RentCar(car_id)
+);
+
+create table Clients (
+client_id number primary key,
+client_name varchar2(20),
+car_id number,
+FOREIGN KEY (car_id) references RentCar(car_id)
+);
+
+create table Price (
+car_id number,
+price number,
+FOREIGN KEY (car_id) references RentCar(car_id)
+);
+
+select * from RentCar;
+
+select * from Characteristics;
+
+select * from Clients;
+
+select * from Price;
+
+select count(car_id) Count_cars from RentCar ; 
+
+select count(car_id) from Characteristics where color = 'Red' ;
+
+select * from Characteristics where color = 'Yellow' ;
+
+select count(car_id) from RentCar where car_year between '08-DEC-20' and '02-JUN-22' ;
+
+select sum(price) Total_Price from price;
+
+select rc.*, p.price from RentCar rc inner join Price p on rc.car_id = p.car_id where p.price = (select min(price) from Price) ;
+
+select * from Price where price = (select min(price) from Price) ;
+
+select * from Price where price = (select max(price) from Price) ;
+
+select rc.*, p.price from RentCar rc inner join Price p on rc.car_id = p.car_id where p.price = (select max(price) from Price) ;
+
